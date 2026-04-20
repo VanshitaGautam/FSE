@@ -69,8 +69,6 @@ jobs:
 #       - name: List Files
 #         run: ls -la
 
-// by default jobs run in parallel, if you want to run them sequentially, 
-//you can use the 'needs' keyword to specify dependencies between jobs.
-// For example, if you want 'second-job' to run after 'test-job', and 'third-job' to run after 'second-job', you can modify the workflow as follows:
-name: Sequential Workflow
-
+# // by default jobs run in parallel, if you want to run them sequentially, 
+# //you can use the 'needs' keyword to specify dependencies between jobs.
+# // For example, if you want 'second-job' to run after 'test-job', and 'third-job' to run after 'second-job', you can modify the workflow as follows:
