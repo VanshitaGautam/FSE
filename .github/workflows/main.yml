@@ -3,40 +3,76 @@ name: First Workflow
 on:
   push:
     branches:
-      - main   # change to master if your repo uses master
+      - main   # change to master if needed
   pull_request:
     branches:
       - main
 
 jobs:
-  test-job:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print message
-        run: echo "GitHub Actions is working!"
+      - name: List files
+        run: ls
 
   second-job:
     runs-on: ubuntu-latest
-    needs: test-job   # 👈 sequential
+    needs: test   # 👈 runs after test
 
     steps:
       - name: Say Hello
         run: echo "Hello Vanshita 👋"
 
-      - name: Show Date
-        run: date
-
   third-job:
     runs-on: ubuntu-latest
-    needs: second-job   # 👈 sequential
+    needs: second-job   # 👈 runs after second-job
 
     steps:
       - name: Say Bye
         run: echo "Workflow completed successfully ✅"
+# name: First Workflow
+
+# on:
+#   push:
+#     branches:
+#       - main   # change to master if your repo uses master
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   test-job:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v3
+
+#       - name: Print message
+#         run: echo "GitHub Actions is working!"
+
+#   second-job:
+#     runs-on: ubuntu-latest
+#     needs: test-job   # 👈 sequential
+
+#     steps:
+#       - name: Say Hello
+#         run: echo "Hello Vanshita 👋"
+
+#       - name: Show Date
+#         run: date
+
+#   third-job:
+#     runs-on: ubuntu-latest
+#     needs: second-job   # 👈 sequential
+
+#     steps:
+#       - name: Say Bye
+#         run: echo "Workflow completed successfully ✅"
 # name: First Workflow
 
 # on:
@@ -72,3 +108,4 @@ jobs:
 # // by default jobs run in parallel, if you want to run them sequentially, 
 # //you can use the 'needs' keyword to specify dependencies between jobs.
 # // For example, if you want 'second-job' to run after 'test-job', and 'third-job' to run after 'second-job', you can modify the workflow as follows:
+# action-> reusable piece of code provide by github to perform common taks-> clonning code, setting up node, etc  keyword use 
